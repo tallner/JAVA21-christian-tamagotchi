@@ -1,0 +1,12 @@
+hur funkar binding?
+this.#intervalIDgame = setInterval(this.#updateGameTimer.bind(this), 1000);
+
+hur strukturera om det?
+just nu är all logik i samma klass, tex texthantering, bildhantering i samma klass som tillståndet av maskinen 
+tex om man har 50 fler metoder så blir klassen skitstor
+tex en klass som hanterar bilder och en som hanterar metoder och som basklass?
+hantering av DOM på annat sätt? egen js-fil?
+
+
+Vad gör import meta?
+new URL('../img/tamaDead.png', import.meta.url);
