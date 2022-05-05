@@ -11,7 +11,6 @@ export class Tamagotchi{
         this.#happiness = 5;
         this.#hunger = 5;
         this.tamaIndex = tamaIndex;
-        
     }
 
     #setPicture(happiness,hunger){

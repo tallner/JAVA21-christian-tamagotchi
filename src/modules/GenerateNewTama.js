@@ -1,14 +1,15 @@
 import {Tamagotchi} from './Tamagotchi.js';
 let tamaIndex = 0;
 
-export function GenerateTama(){
+export function GenerateTama(nameInput){
     
 
-    console.log(tamaIndex);
+    console.log(nameInput);
     let sw = [];
     sw[tamaIndex] = new Tamagotchi(tamaIndex);
 
     const div = document.createElement('div');
+    const name = document.createElement('h1');
     const status = document.createElement('h1');
     const happiness = document.createElement('h2');
     const hunger = document.createElement('h2');
@@ -21,6 +22,9 @@ export function GenerateTama(){
     const img = document.createElement('img');
 
     div.style.border = "thick solid #0000FF";
+
+    name.id = "name-"+tamaIndex;
+    name.innerText = nameInput;
 
     status.id = "life-status-"+tamaIndex;
     status.innerText = "TamaStatus";
@@ -53,7 +57,7 @@ export function GenerateTama(){
 
     img.id = "tama-"+tamaIndex;
 
-    div.append(status,gameTimer,btnStart,happiness,happyTimer,btnPlay,hunger,hungerTimer,btnFeed,img);
+    div.append(name, status,gameTimer,btnStart,happiness,happyTimer,btnPlay,hunger,hungerTimer,btnFeed,img);
 
     document.body.append(div);
 
