@@ -7,33 +7,38 @@ export class Tamagotchi{
     #happiness;
     #hunger;
 
-    constructor(tamaIndex){
+    constructor(tamaIndex,type){
         this.#happiness = 5;
         this.#hunger = 5;
         this.tamaIndex = tamaIndex;
+        this.type = type;
+        //this.#setPicture(this.#happiness,this.#hunger,this.type);
     }
 
-    #setPicture(happiness,hunger){
+    #setPicture(happiness,hunger,type){
         const img = document.querySelector('#tama-'+this.tamaIndex);
-        let tamaImgUrl = new URL('../img/tamaHappy.png', import.meta.url);
+
+        let tamaLink = '../img/tamaHappy'+type+'.png';
 
         if((happiness<=0)||(hunger>=10)){
-            tamaImgUrl = new URL('../img/tamaDead.png', import.meta.url);
+            tamaLink = '../img/tamaDead'+type+'.png';
         } 
         else if ((happiness<5)||(hunger>5)){
-            tamaImgUrl = new URL('../img/tamaSad.png', import.meta.url);
+            tamaLink = '../img/tamaSad'+type+'.png';
         }
-        img.src = tamaImgUrl.href;
+        //tamaImgUrl = new URL(tamaLink, import.meta.url);
+        //img.src = tamaImgUrl.href;
+        img.src = new URL(tamaLink, import.meta.url);
     }
 
     play(){
         (this.#happiness>=10) ? 10 : this.#happiness++;
-        this.#setPicture(this.#happiness,this.#hunger);
+        this.#setPicture(this.#happiness,this.#hunger,this.type);
         document.querySelector('#happiness-value-'+this.tamaIndex).innerText = this.#happiness;
     }
     feed(){
         (this.#hunger<=0) ? 0 : this.#hunger--;
-        this.#setPicture(this.#happiness,this.#hunger);
+        this.#setPicture(this.#happiness,this.#hunger,this.type);
         document.querySelector('#hunger-value-'+this.tamaIndex).innerText = this.#hunger;
     }
     #dead(){
@@ -49,7 +54,7 @@ export class Tamagotchi{
         this.#happiness = 5;
         this.#hunger = 5;
 
-        this.#setPicture(this.#happiness,this.#hunger);
+        this.#setPicture(this.#happiness,this.#hunger,this.type);
 
         document.querySelector('#start-'+this.tamaIndex).innerText = 'Stop';
 
@@ -79,18 +84,18 @@ export class Tamagotchi{
 
         //check life status every second
         if ((this.#happiness<=0)||(this.#hunger>=10)){
-            this.#setPicture(this.#happiness,this.#hunger);
+            this.#setPicture(this.#happiness,this.#hunger,this.type);
             this.#dead();
         }
     }
     #updateHappyTimer(){
         (this.#happiness<=0) ? 0 : this.#happiness--;
-        this.#setPicture(this.#happiness,this.#hunger);
+        this.#setPicture(this.#happiness,this.#hunger,this.type);
         document.querySelector('#happiness-value-'+this.tamaIndex).innerText = this.#happiness;
     }
     #updateHungerTimer(){
         (this.#hunger>=10) ? 10 : this.#hunger++;
-        this.#setPicture(this.#happiness,this.#hunger);
+        this.#setPicture(this.#happiness,this.#hunger,this.type);
         document.querySelector('#hunger-value-'+this.tamaIndex).innerText = this.#hunger;
     }
 }

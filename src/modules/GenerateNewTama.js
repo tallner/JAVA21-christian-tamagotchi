@@ -1,12 +1,12 @@
 import {Tamagotchi} from './Tamagotchi.js';
 let tamaIndex = 0;
 
-export function GenerateTama(nameInput){
+export function GenerateTama(nameInput,typeInput){
     
 
-    console.log(nameInput);
+    //console.log(nameInput);
     let sw = [];
-    sw[tamaIndex] = new Tamagotchi(tamaIndex);
+    sw[tamaIndex] = new Tamagotchi(tamaIndex,typeInput);
 
     const div = document.createElement('div');
     const name = document.createElement('h1');
