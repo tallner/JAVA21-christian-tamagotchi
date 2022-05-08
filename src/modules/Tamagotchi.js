@@ -12,32 +12,59 @@ export class Tamagotchi{
         this.#hunger = 5;
         this.tamaIndex = tamaIndex;
         this.type = type;
-        //this.#setPicture(this.#happiness,this.#hunger,this.type);
     }
 
     #setPicture(happiness,hunger,type){
         const img = document.querySelector('#tama-'+this.tamaIndex);
 
-        /* let tamaLink = '../img/tamaHappy'+type+'.png';
+        /* FUNGERAR INTE??
+            let tamaLink = '../img/tamaHappy'+type+'.png';
+            img.src = new URL(tamaLink, import.meta.url);
+        */
 
-        if((happiness<=0)||(hunger>=10)){
-            tamaLink = '../img/tamaDead'+type+'.png';
-        } 
-        else if ((happiness<5)||(hunger>5)){
-            tamaLink = '../img/tamaSad'+type+'.png';
-        } */
+       
 
-        let tamaLink = '../img/tamaHappyblue.png';
+        if (type == 'blue') {
+            img.src = new URL('../img/tamaHappyblue.png', import.meta.url);
 
-        if((happiness<=0)||(hunger>=10)){
-            tamaLink = '../img/tamaDeadblue.png';
-        } 
-        else if ((happiness<5)||(hunger>5)){
-            tamaLink = '../img/tamaSadblue.png';
+            if((happiness<=0)||(hunger>=10)){
+                //tamaLink = '../img/tamaDeadblue.png';
+                img.src = new URL('../img/tamaDeadblue.png', import.meta.url);
+            } 
+            else if ((happiness<5)||(hunger>5)){
+                //tamaLink = '../img/tamaSadblue.png';
+                img.src = new URL('../img/tamaSadblue.png', import.meta.url);
+            }
+            
+        }else if (type == 'yellow') {
+            img.src = new URL('../img/tamaHappyyellow.png', import.meta.url);
+
+            if((happiness<=0)||(hunger>=10)){
+                //tamaLink = '../img/tamaDeadblue.png';
+                img.src = new URL('../img/tamaDeadyellow.png', import.meta.url);
+            } 
+            else if ((happiness<5)||(hunger>5)){
+                //tamaLink = '../img/tamaSadblue.png';
+                img.src = new URL('../img/tamaSadyellow.png', import.meta.url);
+            }
+        } else {
+            img.src = new URL('../img/tamaHappyyellow.png', import.meta.url);
+
+            if((happiness<=0)||(hunger>=10)){
+                //tamaLink = '../img/tamaDeadblue.png';
+                img.src = new URL('../img/tamaDeadyellow.png', import.meta.url);
+            } 
+            else if ((happiness<5)||(hunger>5)){
+                //tamaLink = '../img/tamaSadblue.png';
+                img.src = new URL('../img/tamaSadyellow.png', import.meta.url);
+            }
         }
+        
+        
+        
         //tamaImgUrl = new URL(tamaLink, import.meta.url);
         //img.src = tamaImgUrl.href;
-        img.src = new URL(tamaLink, import.meta.url);
+        //img.src = new URL(tamaLink, import.meta.url);
     }
 
     play(){
