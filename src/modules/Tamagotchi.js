@@ -18,13 +18,22 @@ export class Tamagotchi{
     #setPicture(happiness,hunger,type){
         const img = document.querySelector('#tama-'+this.tamaIndex);
 
-        let tamaLink = '../img/tamaHappy'+type+'.png';
+        /* let tamaLink = '../img/tamaHappy'+type+'.png';
 
         if((happiness<=0)||(hunger>=10)){
             tamaLink = '../img/tamaDead'+type+'.png';
         } 
         else if ((happiness<5)||(hunger>5)){
             tamaLink = '../img/tamaSad'+type+'.png';
+        } */
+
+        let tamaLink = '../img/tamaHappyblue.png';
+
+        if((happiness<=0)||(hunger>=10)){
+            tamaLink = '../img/tamaDeadblue.png';
+        } 
+        else if ((happiness<5)||(hunger>5)){
+            tamaLink = '../img/tamaSadblue.png';
         }
         //tamaImgUrl = new URL(tamaLink, import.meta.url);
         //img.src = tamaImgUrl.href;
